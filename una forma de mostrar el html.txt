@@ -1,0 +1,26 @@
+                for(i=0;i<MAX;i++)
+                {
+                    if((lista+i)->estado == 0)
+                    {
+                        contado++;
+                    }
+                }
+
+                if(contado != 0)
+                {
+                    pArchivo_HTML = fopen(nombrearchivo,"w");
+
+                    if(pArchivo_HTML != NULL)
+                    {
+                        for(i=0;i<contado;i++)
+                        {
+                            if((lista+i)->estado == 1)
+                            {
+                                fprintf(pArchivo_HTML,"<article class='col-md-4 article-intro'> <a href='#'> <img class='img-responsive img-rounded' src='%s' alt=''>                </a>                <h3>                    <a href='#'>%s</a>                </h3> <ul> <li>Género:%s</li> <li>Puntaje:%d</li> <li>Duración:%d</li> </ul>                <p>%s</p> </article>",(lista+i)->linkImagen,(lista+i)->titulo,(lista+i)->genero,(lista+i)->puntaje,(lista+i)->duracion,(lista+i)->descripcion);
+                                fprintf(pArchivo_HTML,"\n");
+                            }
+                        }
+                    }
+                    
+                    fclose(pArchivo_HTML);
+                }
